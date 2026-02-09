@@ -13,7 +13,7 @@
     ],
     "assets": {
         "web.assets_frontend": [
-            "customize_module/static/src/js/request_quote.js",
+            "customize_website_req_quotation/static/src/js/request_quote.js",
         ],
     },
 
