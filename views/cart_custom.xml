@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Thêm nút trên Checkout -->
+    <template id="add_request_quote_button"
+              inherit_id="website_sale.navigation_buttons">
+
+        <xpath expr="//a[@name='website_sale_main_button']"
+               position="before">
+
+            <a href="javascript:void(0)"
+                style="background-color: #971212; color: #fff;"
+               class="btn w-100 mb-2"
+               id="btn-request-quote">
+                Yêu cầu báo giá
+            </a>
+
+        </xpath>
+    </template>
+
+    <!-- Popup form -->
+    <template id="request_quote_modal"
+              inherit_id="website.layout"
+              name="Request Quote Modal">
+
+        <xpath expr="//body" position="inside">
+            <div class="modal fade" id="requestQuoteModal" tabindex="-1">
+                <div class="modal-dialog">
+
+                    <form id="requestQuoteForm"
+                        class="modal-content"
+                        method="post">
+
+                        <!-- CSRF TOKEN (BẮT BUỘC) -->
+                        <input type="hidden"
+                            name="csrf_token"
+                            t-att-value="request.csrf_token()"/>
+
+                        <div class="modal-header">
+                            <h5 class="modal-title">Yêu cầu báo giá</h5>
+                            <button type="button" class="btn-close"/>
+                        </div>
+
+                        <div class="modal-body">
+                            <input type="text"
+                                name="name"
+                                class="form-control mb-2"
+                                placeholder="Họ và tên *"
+                                required="required"/>
+
+                            <input type="email"
+                                name="email"
+                                class="form-control mb-2"
+                                placeholder="Email"/>
+
+                            <input type="text"
+                                name="phone"
+                                class="form-control"
+                                placeholder="Số điện thoại *"
+                                required="required"/>
+                        </div>
+
+                        <div class="modal-footer">
+                            <button type="submit"
+                                    class="btn btn-primary w-100">
+                                Gửi yêu cầu báo giá
+                            </button>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </xpath>
+
+    </template>
+
+</odoo>
+
+
