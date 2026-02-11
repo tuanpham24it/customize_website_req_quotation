@@ -3,7 +3,13 @@ from odoo.http import request
 
 class WebsiteRequestQuote(http.Controller):
 
-    @http.route('/shop/request_quote', type='http', auth='public', website=True, csrf=True)
+    @http.route(
+        '/shop/request_quote',
+        type='http',
+        auth='public',
+        website=True,
+        csrf=True
+    )
     def request_quote(self, **post):
 
         cart = request.website.sale_get_order()
@@ -52,6 +58,6 @@ class WebsiteRequestQuote(http.Controller):
         )
 
         # 5. Reset giỏ hàng (Xóa các sản phẩm trong giỏ hàng)
-        request.website.sale_reset()
+        # request.website.sale_reset()
 
         return request.redirect('/thank-you')

@@ -62,9 +62,13 @@ odoo.define('customize_module.request_quote', [], function () {
                 fetch('/shop/request_quote', {
                     method: 'POST',
                     body: new FormData(form),
-                }).then(() => {
+                    credentials: 'same-origin',
+                }).then((response) => {
                     hideModal(modal);
-                    window.location.href = '/thank-you';
+                    if (response.redirected) {
+                        window.location.href = response.url || '/thank-you';
+                    }
+                    // window.location.href = '/thank-you';
                 });
             });
         }
